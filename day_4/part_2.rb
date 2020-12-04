@@ -15,7 +15,7 @@ def reset_new_passport
 end
 
 RULES = {
-  'byr' => ->(value) { value.to_i.between?(1920, 2020) },
+  'byr' => ->(value) { value.to_i.between?(1920, 2002) },
   'iyr' => ->(value) { value.to_i.between?(2010, 2020) },
   'eyr' => ->(value) { value.to_i.between?(2020, 2030) },
   'hgt' => lambda do |value|
