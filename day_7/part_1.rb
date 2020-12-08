@@ -1,11 +1,12 @@
 # frozen_string_literal: true
+
 require 'set'
 
 file = File.join(File.dirname(__FILE__), 'input.txt')
 input = File.open(file).readlines.map(&:chomp)
 
 storage = {}
-EXTRATION_REGEXP = /(\d*)\s*(\w+\s\w+)\sbags*/
+EXTRATION_REGEXP = /(\d*)\s*(\w+\s\w+)\sbags*/.freeze
 
 input.each do |rule|
   # for rule = 'light red bags contain 1 bright white bag, 2 muted yellow bags'
@@ -23,10 +24,10 @@ input.each do |rule|
   end
 end
 
-res = Set.new()
+res = Set.new
 search_for = ['shiny gold']
 
-while search_for.size > 0
+while search_for.size.positive?
   process = search_for.pop
   next unless storage.key?(process)
 
@@ -35,3 +36,4 @@ while search_for.size > 0
 end
 
 puts res.size
+
